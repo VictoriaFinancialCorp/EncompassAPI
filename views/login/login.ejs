@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <form action="https://idp.elliemae.com/authorize" method="get">
+      <label>Client ID</label>
+      <input type="text" name="client_id" value="<%= clientID %>"/>
+
+      <input type="hidden" name="response_type" value="code"/>
+      <input type="hidden" name="redirect_uri" value="http://victoriafinancial.net"/>
+      <input type="hidden" name="state" value="123"/>
+      <input type="hidden" name="scope" value="lp"/>
+
+      <input type="submit"/>
+    </form>
+    <script src="/javascripts/bundle.js"></script>
+  </body>
+</html>
