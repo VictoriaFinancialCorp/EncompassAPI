@@ -1,6 +1,13 @@
 {
+  "SessionConfig":{
+    "expires":60000 ,
+    "secret":"RandomLettersAndNumbers"
+  },
   "EncompassAPI": {
-    "id": "randomletters",
-    "secretKey": "morerandomletters"
+    "api_client_id": "randomletters",
+    "api_client_secret": "morerandomletters",
+    "instanceId":"",
+    "userID":"",
+    "userPW":""
   }
 }
