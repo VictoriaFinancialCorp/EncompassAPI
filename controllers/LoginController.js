@@ -54,8 +54,9 @@ module.exports = {
       });
       response.on('end', function(){
         //token saved in browser session
-        req.session.token = access_token.toString();
-        res.send(access_token);
+        req.session.token = JSON.parse(access_token);
+        //res.send(access_token  + "<a href='https://localhost:3000'>home</a>");
+        res.render('login/loggedIn', JSON.parse(access_token) );
 
 
       })
