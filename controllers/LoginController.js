@@ -54,6 +54,9 @@ module.exports = {
       });
       response.on('end', function(){
         //token saved in browser session
+        var hour = 3600000;
+        req.session.cookie.expires = new Date(Date.now() + hour);
+        req.session.cookie.maxAge = hour;
         req.session.token = JSON.parse(access_token);
         //res.send(access_token  + "<a href='https://localhost:3000'>home</a>");
         res.render('login/loggedIn', JSON.parse(access_token) );
