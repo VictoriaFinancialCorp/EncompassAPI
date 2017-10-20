@@ -3,16 +3,34 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "npm run build && nodemon ./bin/www",
+    "build": "./node_modules/.bin/gulp",
+    "debug": "./node_modules/.bin/gulp watch"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "bootstrap": "^3.3.7",
     "config": "^1.26.2",
+    "connect-redis": "^3.3.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
+    "express-session": "^1.15.5",
+    "jquery": "^3.2.1",
     "morgan": "~1.8.1",
+    "redis": "^2.8.0",
     "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "ejs-lint": "^0.3.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "nodemon": "^1.12.0"
   }
 }

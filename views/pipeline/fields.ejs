@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include ../partials/menu %>
+    <h1>Data Fields</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>CriterionFieldName</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.pipelineLoanReportFieldDefs.forEach(function(row){ %>
+          <tr>
+            <td><%= row.name %></td>
+            <td><%= row.criterionFieldName %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <script src="/javascripts/bundle.js"></script>
+  </body>
+</html>
