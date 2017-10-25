@@ -12,6 +12,10 @@ module.exports = {
     let scope = 'lp';
     res.redirect(`${url}?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}&state=${state}%scope=${scope}`);
   },
+  logout:function(req, res, next){
+    req.session.destroy();
+    res.json('logged out');
+  },
 
   getToken: function(req, res, next){
     var https = require('https');

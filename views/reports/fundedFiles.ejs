@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <%- include ../partials/head %>
+  <body>
+    <%- include ../partials/menu %>
+    <div  class="container">
+      <h1>Funded Files</h1>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Investor</th>
+            <th>Investor Number</th>
+            <th>Loan Number</th>
+            <th>Borrower Name</th>
+            <th>Loan Amount</th>
+            <th>Interest Rate</th>
+            <th>Loan Term</th>
+            <th>Processor</th>
+            <th>Loan Officer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(function(row){ %>
+            <% row = row.fields %>
+            <tr>
+              <td><%= row['Fields.VEND.X263'] %></td>
+              <td><%= row['Fields.352'] %></td>
+              <td><%= row['Fields.364'] %></td>
+              <td><%= row['Loan.BorrowerName'] %></td>
+              <td><%= row['Loan.LoanAmount'] %></td>
+              <td><%= row['Fields.3'] %></td>
+              <td><%= row['Fields.4'] %></td>
+              <td><%= row['Fields.362'] %></td>
+              <td><%= row['Fields.317'] %></td>
+            </tr>
+
+          <% }); %>
+
+        </tbody>
+      </table>
+    </div>
+    <%- include ../partials/scripts %>
+  </body>
+</html>

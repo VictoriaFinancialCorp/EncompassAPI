@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var config = require('config');
+var ejsLint = require('ejs-lint');
 
 var index = require('./routes/index');
 var users = require('./routes/users');

@@ -20,6 +20,7 @@
     "jquery": "^3.2.1",
     "morgan": "~1.8.1",
     "redis": "^2.8.0",
+    "redis-server": "^1.1.0",
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
