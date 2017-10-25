@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <%- include ../partials/head %>
+  <body>
+    <%- include ../partials/menu %>
+    <div  class="container">
+      <h1><%= title %></h1>
+      <table class='table'>
+
+        <thead>
+          <tr>
+          <% header.forEach(function(th){ %>
+            <th><%= th %></th>
+          <% }); %>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% rows.forEach(function(row){ %>
+            <tr>
+              <% row.forEach(function(col){ %>
+                <td><%= col %></td>
+              <% }); %>
+            </tr>
+          <% }); %>
+        </tbody>
+
+      </table>
+    </div>
+    <%- include ../partials/scripts %>
+  </body>
+</html>
