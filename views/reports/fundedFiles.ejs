@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html>
   <%- include ../partials/head %>
+  <link rel='stylesheet' href='/stylesheets/bootstrap-datepicker.min.css' />
+  <style>
+    td, th{text-align: center;}
+  </style>
+
   <body>
     <%- include ../partials/menu %>
     <div  class="container">
-      <h1>Funded Files</h1>
+      <h1><%= title %></h1>
+
+      <div class="container">
+          <div class="row" >
+            <form action="/getFundedFiles/" method="get" style="max-width:300px;">
+              <span class="input-group date" data-provide="datepicker" class="datepicker">
+                <input type="text" class="form-control" name="date" value="<%= date %>"/>
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit">Submit</button>
+                </span>
+              </span>
+            </form>
+          </div>
+      </div>
+
+      <br/><br/>
+
       <table class='table'>
         <thead>
           <tr>
@@ -20,16 +44,21 @@
           </tr>
         </thead>
         <tbody>
+          <% let loans = 0;
+            let totalAmt = numeral(0);
+          %>
           <% data.forEach(function(row){ %>
-            <% row = row.fields %>
+            <% loans++;
+              row = row.fields %>
             <tr>
               <td><%= row['Fields.VEND.X263'] %></td>
               <td><%= row['Fields.352'] %></td>
               <td><%= row['Fields.364'] %></td>
               <td><%= row['Loan.BorrowerName'] %></td>
-              <td><%= row['Loan.LoanAmount'] %></td>
-              <td><%= row['Fields.3'] %></td>
-              <td><%= row['Fields.4'] %></td>
+              <td><%= numeral(row['Loan.LoanAmount']).format('$0,0') %></td>
+              <% totalAmt.add(row['Loan.LoanAmount']) %>
+              <td><%= numeral(row['Fields.3']).format('0.000') %></td>
+              <td><%= numeral(row['Fields.4']).format('000') %></td>
               <td><%= row['Fields.362'] %></td>
               <td><%= row['Fields.317'] %></td>
             </tr>
@@ -37,8 +66,16 @@
           <% }); %>
 
         </tbody>
+        <tfooter>
+          <tr>
+            <th colspan="3">Loan Count: <%= loans %></th>
+            <th colspan="3">Loan Amount Total: <%=  numeral(totalAmt).format('$0,0.00') %></th>
+          </tr>
+        </tfooter>
       </table>
     </div>
     <%- include ../partials/scripts %>
+    <script src="/javascripts/bootstrap-datepicker.min.js"></script>
+
   </body>
 </html>

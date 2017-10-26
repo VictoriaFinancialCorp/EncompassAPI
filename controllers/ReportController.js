@@ -2,16 +2,13 @@
 var config = require('config');
 var https = require('https');
 var numeral = require('numeral');
+var moment = require('moment');
 
 module.exports = {
 
   getFundedFiles: function(req, res, next) {
 
-    //check if logged in
-    if(typeof req.session.token === 'undefined' || typeof req.session.token['access_token'] === 'undefined' ){
-      console.log('not logged in');
-      return res.json('Please log in');
-    }
+    let date = (typeof req.param('date') === 'undefined') ? moment(Date.now()).format() : req.param('date');
 
     var options ={
       host: 'api.elliemae.com',
@@ -28,7 +25,7 @@ module.exports = {
         "operator": "or",
         "terms": [
           {
-            "value":"2017-10-24",
+            "value":date,
             "canonicalName":"Fields.Log.MS.Date.Funding",
             "matchType":"equals",
             "precision":"day"
@@ -58,11 +55,17 @@ module.exports = {
       response.on('end', function(){
         //console.log("response: " + data);
         //return res.json(JSON.parse(data));
-        //return res.render('reports/fundedFiles', {data: JSON.parse(data) } );
+        return res.render('reports/fundedFiles', {
+          title: "Funded Files for " + moment(date).format('MM/DD/YYYY'),
+          date:moment(date).format('MM/DD/YYYY'),
+          data: JSON.parse(data),
+          numeral
+        } );
         return res.render('reports/tableReport', {
-          title: "Funded Files",
+          title: "Funded Files for " + moment(date).format('MM/DD/YYYY'),
           header: ["Inestor", "Investor Number", "Loan Number", "Borrower Name", "Loan Amount", "Interest Rate", "Loan Term", "Processor", "Loan Officer"],
-          rows: parseData(JSON.parse(data), body['fields'])
+          rows: parseData(JSON.parse(data), body['fields']),
+          input:{ count:2, type:'date'}
         } );
       });
     });

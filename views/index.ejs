@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include partials/head %>
   <body>
+    <%- include partials/menu %>
+
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
-    <%- include partials/menu %>
 
-    <script src="/javascripts/bundle.js"></script>
+    <%- include partials/scripts %>
   </body>
 </html>
