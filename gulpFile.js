@@ -28,6 +28,13 @@ gulp.task('boostrap', function() {
 
     gulp.src('node_modules/jquery/dist/jquery.min.js')
       .pipe(gulp.dest('public/javascripts'));
+
+    //datepicker
+    gulp.src('node_modules/bootstrap-datepicker/dist/css/*.min.css')
+      .pipe(gulp.dest('public/stylesheets'));
+    gulp.src('node_modules/bootstrap-datepicker/dist/js/*.min.js')
+      .pipe(gulp.dest('public/javascripts'));
+
     return null;
 });
 

@@ -10,6 +10,7 @@
   "dependencies": {
     "body-parser": "~1.17.1",
     "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "^1.7.1",
     "config": "^1.26.2",
     "connect-redis": "^3.3.0",
     "cookie-parser": "~1.4.3",
