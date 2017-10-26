@@ -37,10 +37,11 @@
             <th>Loan Number</th>
             <th>Borrower Name</th>
             <th>Loan Amount</th>
-            <th>Interest Rate</th>
-            <th>Loan Term</th>
+
             <th>Processor</th>
             <th>Loan Officer</th>
+            <th>Funded Date</th>
+            <th>Days Out</th>
           </tr>
         </thead>
         <tbody>
@@ -57,10 +58,11 @@
               <td><%= row['Loan.BorrowerName'].toUpperCase() %></td>
               <td><%= numeral(row['Loan.LoanAmount']).format('$0,0') %></td>
               <% totalAmt.add(row['Loan.LoanAmount']) %>
-              <td><%= numeral(row['Fields.3']).format('0.000') %></td>
-              <td><%= numeral(row['Fields.4']).format('000') %></td>
+
               <td><%= row['Fields.362'] %></td>
               <td><%= row['Fields.317'] %></td>
+              <td><%= moment(row['Fields.Log.MS.Date.Funding']).format('MM/DD/YY') %></td>
+              <td><%= moment(date).diff(row['Fields.Log.MS.Date.Funding'], 'days') %></td>
             </tr>
 
           <% }); %>

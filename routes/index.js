@@ -37,4 +37,6 @@ router.get('/getFields', PipelineController.getFields);
 router.get('/getFundedFiles/', ReportController.getFundedFiles);
 router.get('/getFundedFiles/:date', ReportController.getFundedFiles);
 
+router.get('/getLoansNotPurchased/', ReportController.getLoansNotPurchased);
+
 module.exports = router;

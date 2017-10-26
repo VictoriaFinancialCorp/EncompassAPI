@@ -5,7 +5,14 @@
       <li><a href="//localhost:3000">HOME</a></li>
       <li><a href="/session">get Session</a></li>
       <li><a href="/getFields">get fields</a></li>
-      <li><a href="/getFundedFiles">get funded files</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle ="dropdown" role="button">
+          Funding Reports<span class="caret"></span></a>
+        <ul class='dropdown-menu'>
+          <li><a href="/getFundedFiles">Funded Files</a></li>
+          <li><a href="/getLoansNotPurchased">Loans Not Purchsed</a></li>
+        </ul>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right ">
       <li><a href="/login">Login</a></li>
